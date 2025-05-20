@@ -31,8 +31,21 @@ docker-compose stop
 
 ## TODO
 
-- [ ] store the postgres data in the project root, so that the n8n workflows are available for everybody. Trying in PR: https://github.com/peterDijk/n8n-and-mcpservers/pull/4
+- [x] store the postgres data in the project root, so that the n8n workflows are available for everybody. Trying in PR: https://github.com/peterDijk/n8n-and-mcpservers/pull/4
 
 ## Configuration
 
-The default name of the database, user and password for PostgreSQL can be changed in the [`.env`](.env) file in the current directory.
+To create a db dump from current database state:
+
+Get into the container:
+`docker compose exec -it postgres bash`
+
+Make the dump:
+`pg_dump -U changeUser n8n > /var/lib/postgresql/data/[filename].sql`
+
+Exit the container: `exit`
+
+Copy the file from the container to our project root:
+`dc cp postgres:/var/lib/postgresql/data/[filename].sql ./postgres_db_dumps/[filename].sql`
+
+Done, file is now in the `postgres_db_dumps` folder
