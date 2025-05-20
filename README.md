@@ -37,15 +37,8 @@ docker-compose stop
 
 To create a db dump from current database state:
 
-Get into the container:
-`docker compose exec -it postgres bash`
+run `./dump-database.sh`
 
-Make the dump:
-`pg_dump -U changeUser n8n > /var/lib/postgresql/data/[filename].sql`
+To refresh database with latest dump:
 
-Exit the container: `exit`
-
-Copy the file from the container to our project root:
-`dc cp postgres:/var/lib/postgresql/data/[filename].sql ./postgres_db_dumps/[filename].sql`
-
-Done, file is now in the `postgres_db_dumps` folder
+run `./refresh-database.sh`
