@@ -1,7 +1,9 @@
 import { create } from "./mcp-server.ts";
 import { createSSEServer } from "./sse-server.ts";
+import { createStreamHttpServer } from "./stream-http-server.ts";
 
 const mcpServer = create();
-const sseServer = createSSEServer(mcpServer);
+// const sseServer = createSSEServer(mcpServer);
+const streamableHttpServer = createStreamHttpServer(mcpServer);
 
-sseServer.listen(process.env.PORT || 3002);
+streamableHttpServer.listen(process.env.PORT || 3002);
