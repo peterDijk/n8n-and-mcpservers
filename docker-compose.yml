@@ -27,6 +27,16 @@ services:
       timeout: 5s
       retries: 10
 
+  nginx:
+    image: arm64v8/nginx:latest
+    user: root
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx_data/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx_data/certs:/etc/nginx/certs
+
   n8n:
     image: docker.n8n.io/n8nio/n8n
     restart: always
