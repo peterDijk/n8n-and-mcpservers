@@ -6,9 +6,9 @@ Starts a demo MCP server to connect n8n with it. The MCP server has some basic t
 To verify MCP server is up and running ok, use the MCP Inspector https://modelcontextprotocol.io/docs/tools/inspector
 To run: `npx @modelcontextprotocol/inspector`
 
-The MCP server is served by docker on port 3000.
+The MCP server is running in docker internally on host `test-mcp-server` port `3002`.
+To connect from n8n, use URL: http://test-mcp-server:3002/mcp
 Transport type: Streamable HTTP.
-URL: http://localhost:3000/mcp
 
 ## Start
 
@@ -32,7 +32,6 @@ docker-compose stop
 ## TODO
 
 - [ ] store the postgres data in the project root, so that the n8n workflows are available for everybody. Trying in PR: https://github.com/peterDijk/n8n-and-mcpservers/pull/4
-- [ ] setup nginx to serve n8n. Allows us to disable gzip compression what is apparently needed to be able to connect
 
 ## Configuration
 
