@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "node --experimental-strip-types src/index.ts",
-    "dev": "concurrently \"npx @modelcontextprotocol/inspector\" \"npm start\""
+    "dev": "concurrently \"npx @modelcontextprotocol/inspector\" \"npm start\"",
+    "build": "tsc && chmod 755 build/index.js"
   },
   "keywords": [],
   "author": "Peter van Dijk",

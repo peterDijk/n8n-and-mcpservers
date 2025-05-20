@@ -1,8 +1,10 @@
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+import { create } from "./mcp-server.ts";
 
 async function main() {
+  const mcpServer = create();
   const transport = new StdioServerTransport();
-  await server.connect(transport);
+  await mcpServer.connect(transport);
   console.error("Weather MCP Server running on stdio");
 }
 
