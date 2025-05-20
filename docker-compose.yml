@@ -54,7 +54,7 @@ services:
       - NODE_ENV=development
 
   opensearch-node1:
-    image: opensearchproject/opensearch:2.3.0
+    image: opensearchproject/opensearch:3
     container_name: opensearch-node1
     environment:
       - cluster.name=opensearch-cluster
@@ -62,6 +62,7 @@ services:
       - discovery.type=single-node
       - bootstrap.memory_lock=true # along with the memlock settings below, disables swapping
       - "OPENSEARCH_JAVA_OPTS=-Xms512m -Xmx512m" # minimum and maximum Java heap size, recommend setting both to 50% of system RAM
+      - OPENSEARCH_INITIAL_ADMIN_PASSWORD=Bynder123! # initial password for the admin user
     ulimits:
       memlock:
         soft: -1
@@ -77,14 +78,15 @@ services:
     networks:
       - opensearch-net
   opensearch-dashboards:
-    image: opensearchproject/opensearch-dashboards:2.3.0
+    image: opensearchproject/opensearch-dashboards:3
     container_name: opensearch-dashboards
     ports:
       - 5601:5601
     expose:
       - "5601"
     environment:
-      OPENSEARCH_HOSTS: '["https://opensearch-node1:9200"]'
+      OPENSEARCH_HOSTS: '["http://opensearch-node1:9200", "https://opensearch-node1:9200"]'
+      # DISABLE_SECURITY_DASHBOARDS_PLUGIN: "true"
     networks:
       - opensearch-net
 
