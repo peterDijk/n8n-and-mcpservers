@@ -111,6 +111,18 @@ services:
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY:-""}
       - AWS_SESSION_TOKEN=${AWS_SESSION_TOKEN:-""}
 
+  grafana-mcp-server:
+    image: mcp/grafana
+    container_name: grafana-mcp-server
+    restart: always
+    ports:
+      - 8000:8000
+    expose:
+      - "8000"
+    environment:
+      - GRAFANA_URL=
+      - GRAFANA_API_KEY=
+
 volumes:
   opensearch-data1:
   db_storage:
