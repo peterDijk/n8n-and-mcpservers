@@ -7,8 +7,13 @@ To verify MCP server is up and running ok, use the MCP Inspector https://modelco
 To run: `npx @modelcontextprotocol/inspector`
 
 The MCP server is running in docker internally on host `test-mcp-server` port `3002`.
+The MCP Client tool that needs to be used is not the one that is available in the official tools - that one doesn't support Streamable HTTP yet. For this, install a community node:
+
+Bottom left dots menu next to username -> Settings
+At Community nodes, install `n8n-nodes-mcp`
+Add the tool to your AI Agent, choose the community node.
+Add connection settings, transport type: Streamable HTTP.
 To connect from n8n, use URL: http://test-mcp-server:3002/mcp
-Transport type: Streamable HTTP.
 
 ## Start
 
